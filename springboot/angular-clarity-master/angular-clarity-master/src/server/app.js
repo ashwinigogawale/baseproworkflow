@@ -9,8 +9,8 @@ app.use(cors({
 }))
 app.get(':endpoint([\\/\\w\\.-]*)',function(req,res){
 
- //let endpoint ='http://3.109.1.20:3300/api/v1' + req.params.endpoint
- let endpoint = 'http://3.109.1.20:10086'+ req.params.endpoint
+ let endpoint ='http://3.109.1.20:3300/api/v1' + req.params.endpoint
+ //let endpoint = 'http://3.109.1.20:10086'+ req.params.endpoint
 
 
   axios.get(endpoint).then(response=>{

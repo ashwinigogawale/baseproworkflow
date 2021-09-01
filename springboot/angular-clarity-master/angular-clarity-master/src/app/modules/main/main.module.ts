@@ -76,6 +76,8 @@ import { PropertyComponent } from './wireframe/property/property.component';
 import { SuregitComponent } from './suregit/suregit.component';
 import { SuredocrComponent } from './suredocr/suredocr.component';
 import { SurefarmComponent } from './surefarm/surefarm.component';
+import { GitfolderComponent } from './gitfolder/gitfolder.component';
+import { GitfileComponent } from './gitfile/gitfile.component';
 
 
 
@@ -87,7 +89,7 @@ import { SurefarmComponent } from './surefarm/surefarm.component';
   declarations: [
     MainPageComponent, PageNotFoundComponent,
     AboutComponent, LayoutComponent,
-    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent,
+    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent, GitfolderComponent, GitfileComponent,
   ],
   imports: [
     CommonModule,

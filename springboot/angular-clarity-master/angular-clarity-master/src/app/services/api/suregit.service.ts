@@ -27,4 +27,8 @@ private nameurl="http://localhost:3000/repos/ganeshris/Villa/commits"
   getname():Observable<any>{
     return this.http.get(this.nameurl);
   }
+  getById(id: number): Observable<any> {
+    const _http = this.baseURL + "/" + id;
+    return this.http.get(_http);
+  }
 }

@@ -67,6 +67,8 @@ import { ModuleSetup1Component } from './module-setup1/module-setup1.component';
 import { Wireframe1Component } from './wireframe1/wireframe1.component';
 import { UinameeditComponent } from './wireframe/uinameedit/uinameedit.component';
 import { PropertyComponent } from './wireframe/property/property.component';
+import { GitfolderComponent } from './gitfolder/gitfolder.component';
+import { GitfileComponent } from './gitfile/gitfile.component';
 
 
 
@@ -132,7 +134,8 @@ const routes: Routes = [
       { path: 'actions', component: ActionsComponent },
       { path: 'wireframe', component: Wireframe1Component },
       { path: 'bi-build', component: SelectBiComponent },
-
+      {path:'gitfolder',component:GitfolderComponent},
+      {path:'gitfile',component:GitfileComponent},
 //report builder
 {
   path: 'report-builder', component: ReportBuilderComponent,
