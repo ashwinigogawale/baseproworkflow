@@ -5,16 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GitfileService {
-  private baseURL = "http://localhost:3000/repos/ganeshris/Villa/git/blobs/db4c6d9b6797601";
-  //private baseURL = "http://localhost:3000/repos/ganeshris/Villa/git/trees/f8acd30ef1a45"
+  private baseURL = "http://localhost:3000/repos/ganeshris/Villa/git/blobs/";
+
   constructor(private http:HttpClient) { }
-  getAll(): Observable<any> {
+  getAll(id:string): Observable<any> {
     //Create Request URL params
 
-    return this.http.get(this.baseURL);
+    return this.http.get(this.baseURL+id);
   }
-  getById(id: number): Observable<any> {
-    const _http = this.baseURL + "/" + id;
-    return this.http.get(_http);
-  }
+
 }

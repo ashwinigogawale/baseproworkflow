@@ -69,6 +69,9 @@ import { UinameeditComponent } from './wireframe/uinameedit/uinameedit.component
 import { PropertyComponent } from './wireframe/property/property.component';
 import { GitfolderComponent } from './gitfolder/gitfolder.component';
 import { GitfileComponent } from './gitfile/gitfile.component';
+import { Gitfolder1Component } from './gitfolder1/gitfolder1.component';
+import { Gitfile1Component } from './gitfile1/gitfile1.component';
+import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 
 
 
@@ -135,7 +138,10 @@ const routes: Routes = [
       { path: 'wireframe', component: Wireframe1Component },
       { path: 'bi-build', component: SelectBiComponent },
       {path:'gitfolder',component:GitfolderComponent},
+      {path:'gitfolder1',component:Gitfolder1Component},
+      {path:'gitfolder2',component:Gitfolder2Component},
       {path:'gitfile',component:GitfileComponent},
+      {path:'gitfile1',component:Gitfile1Component},
 //report builder
 {
   path: 'report-builder', component: ReportBuilderComponent,

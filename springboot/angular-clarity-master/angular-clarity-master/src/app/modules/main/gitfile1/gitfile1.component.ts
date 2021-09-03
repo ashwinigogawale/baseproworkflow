@@ -7,16 +7,12 @@ import { SuregitService } from 'src/app/services/api/suregit.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Gitfile } from 'src/app/models/gitfile';
-
-// const base64 = require('')
-
-
- @Component({
-  selector: 'app-gitfile',
-  templateUrl: './gitfile.component.html',
-  styleUrls: ['./gitfile.component.scss']
+@Component({
+  selector: 'app-gitfile1',
+  templateUrl: './gitfile1.component.html',
+  styleUrls: ['./gitfile1.component.scss']
 })
-export class GitfileComponent implements OnInit {
+export class Gitfile1Component implements OnInit {
   showme:boolean=false;
   suregit:Gitfile;
   surestar:Surestar;
@@ -24,14 +20,12 @@ export class GitfileComponent implements OnInit {
   name:any="";
   gitid:any="";
     msg: any;
-
   constructor(private gitfileservice:GitfileService,
     private suregitservice:SuregitService,
     private http:HttpClient,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     let id= this.route.snapshot.queryParams.id
     this.suregit = new Gitfile();
     this.gitfileservice.getAll(id).subscribe((data) => {
@@ -59,14 +53,11 @@ this.msg=data[0]["commit"]["message"];
 
 
   }
-
-toggle(){
-  this.showme=!this.showme;
-}
-decode(enc:string){
-  if(enc!=null){
-  return atob(enc);}
-}
-
-
+  toggle(){
+    this.showme=!this.showme;
+  }
+  decode(enc:string){
+    if(enc!=null){
+    return atob(enc);}
+  }
 }

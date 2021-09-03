@@ -5,6 +5,9 @@ import { Surestar } from 'src/app/models/surestar';
 import { Surename } from 'src/app/models/surename';
 import { ActivatedRoute, Router } from '@angular/router';
 import { anyOrAllPropertiesPass } from '@cds/core/internal';
+import { HttpClient } from '@angular/common/http';
+import * as JSZip from 'jszip';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-suregit',
   templateUrl: './suregit.component.html',
@@ -17,12 +20,15 @@ surestar:Surestar;
 sure:Surename;
 name:any="";
 gitid:any="";
+temprouterlink="";
   msg: any;
   constructor( private suregitservice:SuregitService,
     private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
+
     this.suregitservice.getAll().subscribe((data) => {
       this.suregit = data.tree;
       console.log(data.tree);
@@ -53,10 +59,37 @@ toggle(){
     this.showme=!this.showme;
   }
 
+
   getbyid(id){
     this.router.navigate(["../gitfolder"], { relativeTo: this.route });
 
   }
+  onclick(user:Suregit){
+    // console.log(user);
+    // this.temprouterlink = "/main/gitfolder/"+user.sha;
+    // console.log(this.temprouterlink);
+    this.router.navigate(["/main/gitfolder"], { relativeTo: this.route ,queryParams:{id:user.sha}});
+  }
+  onclick1(user:Suregit){
+    // console.log(user);
+    // this.temprouterlink = "/main/gitfolder/"+user.sha;
+    // console.log(this.temprouterlink);
+    this.router.navigate(["/main/gitfile"], { relativeTo: this.route ,queryParams:{id:user.sha}});
+  }
+  copyInputMessage(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+
+  }
+
+
+
+
+
+
+
+
 }
 
 

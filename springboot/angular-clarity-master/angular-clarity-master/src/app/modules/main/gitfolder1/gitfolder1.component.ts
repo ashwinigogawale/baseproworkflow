@@ -6,11 +6,11 @@ import { Surestar } from 'src/app/models/surestar';
 import { Surename } from 'src/app/models/surename';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
-  selector: 'app-gitfolder',
-  templateUrl: './gitfolder.component.html',
-  styleUrls: ['./gitfolder.component.scss']
+  selector: 'app-gitfolder1',
+  templateUrl: './gitfolder1.component.html',
+  styleUrls: ['./gitfolder1.component.scss']
 })
-export class GitfolderComponent implements OnInit {
+export class Gitfolder1Component implements OnInit {
   showme:boolean=false;
   suregit:Suregit[];
   surestar:Surestar;
@@ -22,9 +22,8 @@ export class GitfolderComponent implements OnInit {
   tempid:any;
   constructor(private suregitservice:SuregitService,
     private gitservice:GitfolderService,
-    private router: Router,
-    private route: ActivatedRoute,) { }
-
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     let id= this.route.snapshot.queryParams.id
@@ -58,7 +57,7 @@ this.msg=data[0]["commit"]["message"];
     // console.log(user);
     // this.temprouterlink = "/main/gitfolder/"+user.sha;
     // console.log(this.temprouterlink);
-    this.router.navigate(["/main/gitfolder1"], { relativeTo: this.route ,queryParams:{id:user.sha}});
+    this.router.navigate(["/main/gitfolder2"], { relativeTo: this.route ,queryParams:{id:user.sha}});
   }
   onclick1(user:Suregit){
     // console.log(user);

@@ -65,24 +65,13 @@
   </thead>
   <tbody  >
 
-    <tr *ngFor="let user of suregit" >
-      <td class="left" *ngIf="user.type === 'tree'"><clr-icon shape="folder"></clr-icon>
-        <a href="{{user.url}}">
-        {{user.path}}</a></td>
-        <td class="left" *ngIf="user.type === 'tree'">initial</td>
-        <td class="right" *ngIf="user.type === 'tree'">
-          18 hours Ago
-        </td>
+    <tr  >
+      <td class="left" >
+        <a>{{decode(suregit.content)}}
+        </a></td>
+
     </tr>
-    <tr *ngFor="let user of suregit">
-      <td class="left" *ngIf="user.type === 'blob'"><clr-icon shape="file"></clr-icon>
-        <a href="{{user.url}}">
-        {{user.path}}</a></td>
-      <td class="left" *ngIf="user.type === 'blob'">initial</td>
-      <td class="right" *ngIf="user.type === 'blob'">
-        18 hours Ago
-      </td>
-    </tr>
+
   </tbody>
 </table>
 

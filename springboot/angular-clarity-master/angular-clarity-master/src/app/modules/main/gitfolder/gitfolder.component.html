@@ -55,12 +55,11 @@
     <tr>
       <th class="left" >
         <img class="ui avatar image" src="assets/images/git.png" title="ganeshris" width="24" height="24">
-        <a href="/ganeshris"><strong>{{name.name}}</strong></a>
-        <a rel="nofollow" class="ui sha label " href="/ganeshris/Villa/commit/362c19c0351e55414958c1a7f5876a6076b55345">
-        <span  class="shortsha">{{gitid.substring(0,12)}}</span>
-
-      </a></th>
-      <th class="left">initial <button class="basic compact mini ui icon button commit-button" (click)="toggle()"><clr-icon shape="ellipsis-horizontal"></clr-icon></button>
+        <span style="padding-left: 5px;">    <a href="/ganeshris"><strong>{{name.name}}</strong></a></span>
+<span style="padding-left: 10px;">
+        <button >{{gitid.substring(0,12)}}</button>
+      </span></th>
+      <th class="left" style="color: #4183C4;">This is initial commit by  <button class="basic compact mini ui icon button commit-button" (click)="toggle()"><clr-icon shape="ellipsis-horizontal"></clr-icon></button>
         <div *ngIf="showme">
           {{msg}}
 </div>
@@ -70,20 +69,20 @@
   </thead>
   <tbody  >
 
-    <tr *ngFor="let user of suregit" >
-      <td class="left" *ngIf="user.type === 'tree'"><clr-icon shape="folder"></clr-icon>
-        <a href="{{user.url}}">
+    <tr *ngFor="let user of suregit" (click) = "onclick(user)" >
+      <td class="left" *ngIf="user.type === 'tree'" style="color: #4183C4;"><clr-icon shape="folder"></clr-icon>
+        <a >
         {{user.path}}</a></td>
-        <td class="left" *ngIf="user.type === 'tree'">initial</td>
+        <td class="left" *ngIf="user.type === 'tree'" style="color: #4183C4;">This is initial commit by Ganesh</td>
         <td class="right" *ngIf="user.type === 'tree'">
           18 hours Ago
         </td>
     </tr>
-    <tr *ngFor="let user of suregit">
+    <tr *ngFor="let user of suregit"  (click) = "onclick1(user)">
       <td class="left" *ngIf="user.type === 'blob'"><clr-icon shape="file"></clr-icon>
-        <a href="{{user.url}}">
+        <a style="color: #4183C4;">
         {{user.path}}</a></td>
-      <td class="left" *ngIf="user.type === 'blob'">initial</td>
+      <td class="left" *ngIf="user.type === 'blob'" style="color: #4183C4;">This is initial commit by Ganesh</td>
       <td class="right" *ngIf="user.type === 'blob'">
         18 hours Ago
       </td>
