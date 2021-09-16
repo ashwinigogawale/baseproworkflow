@@ -82,6 +82,13 @@ import { Gitfolder1Component } from './gitfolder1/gitfolder1.component';
 import { Gitfile1Component } from './gitfile1/gitfile1.component';
 import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 
+import { Edit2wireframeComponent } from './wireframe/edit2wireframe/edit2wireframe.component';
+import { DragdropComponent } from './dragdrop/dragdrop.component';
+import { DraggableDirective } from './dragdrop/draggable.directive';
+import { DroppableDirective } from './dragdrop/droppable.directive';
+import { DragService } from 'src/app/services/api/drag.service';
+
+
 
 
 
@@ -90,9 +97,11 @@ import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 
 @NgModule({
   declarations: [
+    DroppableDirective,
+    DraggableDirective,
     MainPageComponent, PageNotFoundComponent,
     AboutComponent, LayoutComponent,
-    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent, GitfolderComponent, GitfileComponent, Gitfolder1Component, Gitfile1Component, Gitfolder2Component,
+    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent, GitfolderComponent, GitfileComponent, Gitfolder1Component, Gitfile1Component, Gitfolder2Component, Edit2wireframeComponent, DragdropComponent,
   ],
   imports: [
     CommonModule,
@@ -101,6 +110,9 @@ import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
     ClarityModule,
     HelperModule,
     MainRoutingModule
-  ]
+  ],
+  providers: [
+    DragService
+  ],
 })
 export class MainModule { }

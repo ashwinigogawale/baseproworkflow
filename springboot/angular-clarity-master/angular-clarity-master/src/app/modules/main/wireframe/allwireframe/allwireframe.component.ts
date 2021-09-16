@@ -65,6 +65,10 @@ export class AllwireframeComponent implements OnInit {
     this.router.navigate(["../project/modules/wireframe/edit/" + id], { relativeTo: this.route });
 
   }
+  goToEdit2(id: number,editmode: string) {
+    this.router.navigate(["../project/modules/wireframe/edit2/" + id], { relativeTo: this.route });
+
+  }
   onExport() {
     this.excel.exportAsExcelFile(this.rows, 'user_',
       moment().format('YYYYMMDD_HHmmss'))

@@ -216,4 +216,7 @@ export class AddwireframeComponent implements OnInit {
     //this.getModulesDropDown();
     //this.getWireFrameDropDown();
   }
+  submit2(){
+
+  }
 }

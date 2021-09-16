@@ -27,6 +27,7 @@ import { TechnologyStackService } from './services/api/technology-stack.service'
 import { DropdownService } from './services/api/dropdown.service';
 import { WireframeService } from './services/api/wireframe.service';
 import { SuregitService } from './services/api/suregit.service';
+import { DragDropModule  } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { SuregitService } from './services/api/suregit.service';
     LoginModule,
     FormsModule,
     ReactiveFormsModule,
-
+    DragDropModule
   ],
   providers: [
     MainService,

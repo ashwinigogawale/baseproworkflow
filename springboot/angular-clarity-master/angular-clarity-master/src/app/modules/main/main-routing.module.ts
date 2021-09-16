@@ -73,6 +73,10 @@ import { Gitfolder1Component } from './gitfolder1/gitfolder1.component';
 import { Gitfile1Component } from './gitfile1/gitfile1.component';
 import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 
+import { Edit2wireframeComponent } from './wireframe/edit2wireframe/edit2wireframe.component';
+import { DragdropComponent } from './dragdrop/dragdrop.component';
+
+
 
 
 
@@ -92,7 +96,7 @@ const routes: Routes = [
       {path:'stepper',component:StepperComponent},
       {path:'workflow',component:WorkflowComponent},
 
-
+      {path:'dragdrop',component:DragdropComponent},
 
 
 
@@ -193,6 +197,7 @@ const routes: Routes = [
               { path: 'types', component: WireframetypeComponent },
 
               { path: 'edit/:id', component: EditwireframeComponent },
+              { path: 'edit2/:id', component: Edit2wireframeComponent },
               { path: 'edit/:id/properties', component: PropertiesComponent },
               { path: 'edit/:id/property', component: PropertyComponent },
 
