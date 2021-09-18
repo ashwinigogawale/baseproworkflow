@@ -75,6 +75,7 @@ import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 
 import { Edit2wireframeComponent } from './wireframe/edit2wireframe/edit2wireframe.component';
 import { DragdropComponent } from './dragdrop/dragdrop.component';
+import { DragComponent } from './drag/drag.component';
 
 
 
@@ -97,7 +98,7 @@ const routes: Routes = [
       {path:'workflow',component:WorkflowComponent},
 
       {path:'dragdrop',component:DragdropComponent},
-
+      {path:'drag',component:DragComponent},
 
 
       {path:'play',component:PlayComponent,

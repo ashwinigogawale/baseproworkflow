@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import{Drag} from 'src/app/models/drag';
+
+
+
 
 @Component({
   selector: 'app-dragdrop',
@@ -7,12 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DragdropComponent implements OnInit {
 
-  private draggableElements = 4;
+  private draggableElements = 2;
   private zonePrefix = 'zone-';
   public droppableObjects: Array<any> = [];
   public draggableObjects: Array<Array<any>> = [[], [], [],[]];
+  open:boolean = false;
 
-  constructor() {
+
+
+
+  rowSelected :any= {};
+  modaladd=false;
+  addcolumn: number;
+
+  constructor(
+    ) { }
+
+  ngOnInit(): void {
     for (let i = 0; i < this.draggableElements; i++) {
       // Define the droppable objects
       this.droppableObjects.push({
@@ -32,10 +49,6 @@ export class DragdropComponent implements OnInit {
         zones: this.generateZones(i)
       });
     }
-
-   }
-
-  ngOnInit(): void {
   }
 
 
@@ -80,27 +93,39 @@ export class DragdropComponent implements OnInit {
         }
       }
     }
+
+
     gotoadd(){
-      for (let j = 0; j < this.draggableElements; j++) {
+      for (let i = 0; i < this.draggableElements-1; i++) {
+
         // Define the droppable objects
         this.droppableObjects.push({
           data: {
-            column: j
+            column: i
           },
-          zone: this.zonePrefix + j
+          zone: this.zonePrefix + i
         });
-}}
+
+
+      }}
 gotoadd1(){
   let i=0;
   this.draggableObjects[i].push({
-    data: {
-      id: i,
-      payload: 'Some data you need to pass',
-      name: 'Draggable item - ' + i,
-      currentColumn: i,
-    },
+
     zones: this.generateZones(i)
   });
 
 }
+
+
+onSave() {
+  this.modaladd=false;
+  let i=0;
+  this.draggableObjects[i].push({
+    zones: this.generateZones(i)
+  })
+
+
+}
+
 }

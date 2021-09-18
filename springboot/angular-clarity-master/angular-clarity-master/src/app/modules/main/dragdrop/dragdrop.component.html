@@ -4,35 +4,102 @@
     Drag and Drop
   </h1>
 
+  <div class="clr-col-12" style="text-align: right;">
+    <button id="add" class="btn btn-primary"  (click)="gotoadd()">
+            <clr-icon shape="plus"></clr-icon>ADD
+          </button>
 
+          <button id="add" class="btn btn-primary" (click)="open = true">
+            <clr-icon shape="plus"></clr-icon>create issues
+          </button>
+        </div>
+        <div class="board-wrapper">
 
-      <div class="clr-col-12" style="text-align: right;">
+          <div class="board-columns">
 
-        <button id="add" class="btn btn-primary"  (click)="gotoadd()">
-          <clr-icon shape="plus"></clr-icon>ADD
-        </button>
-      </div>
-
-
-
-  <ng-container *ngFor="let dropZone of droppableObjects; let i = index;" >
-
+  <ng-container *ngFor="let dropZone of droppableObjects; let i = index;">
 
     <div [appDroppable]="dropZone"
          (onDroppableComplete)="onZoneDrop($event)">
-         <div class="add" style="text-align: right;">
+<div>
+  <span>  <label for="">todo</label></span>
 
-         <button id="add"   (click)="gotoadd1()" style="margin: 10px;">
-          <clr-icon shape="plus"></clr-icon>
-        </button></div>
-
+         <span class="add" style="float: right;">
+          <cds-icon-button action="outline" status="success" (click)="gotoadd1()">
+            <clr-icon shape="plus"></clr-icon>
+        </cds-icon-button>
+          </span> </div>
        <ng-container *ngFor="let draggableElement of draggableObjects[i]; let j = index;">
          <div [appDraggable]="draggableElement">
+          <div [appDraggable]="draggableElement">
 
-            {{draggableElement.data.name}}
+            <div>
+              <div  class="clr-row clr-align-items-start clr-justify-content-start">
+                  <div class="clr-col-auto" style="max-width: min-content;">
+                      <a class="card clickable"  routerLinkActive="actice">
+                          <div class="card-block">
+                            <div class="chat-area">
+                              <div class="income-msg">
+                              <img class="avatar" src="assets/ash.jpg" alt="">
+                              <span class="msg"> Card Title.</span>
+                              <div class="dropdown-container" tabindex="-1" style="float: right;">
+                                <div class="three-dots"></div>
+                                <div class="dropdown">
+                                  <a href="" ><div>Add</div></a>
+                                  <a href=""><div>download</div></a>
+                                  <a href="#"><div>delete</div></a>
+                                </div>
+                              </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                          <div class="card-footer">
+                              <span class="label label-light-blue p7" style="margin-top: .4em; display: inline;">ID:100</span>
+                              <span class="label label-purple p7" style="margin-top: .4em; display: inline;">2021-09-17 </span>
+
+                          </div>
+                      </a>
+                  </div>
+              </div></div>
+
+           </div>
          </div>
        </ng-container>
     </div>
   </ng-container>
-</div>
+</div></div></div>
 
+
+
+
+<clr-wizard #wizard [(clrWizardOpen)]="open">
+  <clr-wizard-title> Wizard </clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'" (click)="onSave()">Finish</clr-wizard-button>
+
+  <clr-wizard-page>
+      <ng-template clrPageTitle>Page 1</ng-template>
+      <label for="id">Title</label><span class="required-field">*</span>
+      <input type="text" placeholder="enter title" name="title" required>
+      <label for="des">Description</label><span class="required-field">*</span>
+      <textarea name="description" id="" cols="30" rows="4"></textarea>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+      <ng-template clrPageTitle>Page 2</ng-template>
+      <label for="name">id</label>
+      <input type="text" placeholder="enter id">
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+      <ng-template clrPageTitle>Page 3</ng-template>
+      <label for="date">date</label>
+      <input type="date">
+  </clr-wizard-page>
+</clr-wizard>
