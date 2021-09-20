@@ -33,17 +33,20 @@
          <div [appDraggable]="draggableElement">
           <div [appDraggable]="draggableElement">
 
-            <div>
-              <div  class="clr-row clr-align-items-start clr-justify-content-start">
-                  <div class="clr-col-auto" style="max-width: min-content;">
-                      <a class="card clickable"  routerLinkActive="actice">
-                          <div class="card-block">
+
+
+
+            <div >
+              <div  class="clr-row clr-align-items-start clr-justify-content-start"  >
+                  <div class="clr-col-auto" style="max-width: min-content;" >
+                      <a class="card clickable"  routerLinkActive="actice" style="border-left: rgb(230, 28, 78); border-style: solid;">
+                          <div class="card-block" >
                             <div class="chat-area">
                               <div class="income-msg">
-                              <img class="avatar" src="assets/ash.jpg" alt="">
+                              <img class="avatar" src="assets/download.png" alt="">
                               <span class="msg"> Card Title.</span>
-                              <div class="dropdown-container" tabindex="-1" style="float: right;">
-                                <div class="three-dots"></div>
+                              <div class="dropdown-container" tabindex="-1">
+                                <div class="three-dots" ></div>
                                 <div class="dropdown">
                                   <a href="" ><div>Add</div></a>
                                   <a href=""><div>download</div></a>
@@ -76,30 +79,241 @@
 
 
 <clr-wizard #wizard [(clrWizardOpen)]="open">
-  <clr-wizard-title> Wizard </clr-wizard-title>
+  <clr-wizard-title> Issue </clr-wizard-title>
 
   <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
   <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
   <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
   <clr-wizard-button [type]="'finish'" (click)="onSave()">Finish</clr-wizard-button>
-
+  <form [formGroup]="registerform">
   <clr-wizard-page>
-      <ng-template clrPageTitle>Page 1</ng-template>
+      <ng-template clrPageTitle>Description</ng-template>
       <label for="id">Title</label><span class="required-field">*</span>
-      <input type="text" placeholder="enter title" name="title" required>
+      <input type="text" placeholder="Enter title" name="title" required formControlName="title">
       <label for="des">Description</label><span class="required-field">*</span>
-      <textarea name="description" id="" cols="30" rows="4"></textarea>
+      <textarea name="description" id="" cols="10" rows="3" placeholder="Enter description" formControlName="description"></textarea>
+      <label for="id">Tags</label><span class="required-field">*</span>
+      <input type="text" placeholder="Enter tags" name="title" required>
+    </clr-wizard-page>
+
+  <clr-wizard-page>
+      <ng-template clrPageTitle>Time and Assignments</ng-template>
+     <div>
+
+      <div id="example" role="application" style="float:left;width:49%; margin-right:2%">
+		    <div id="select" class="demo-section k-content">
+
+            <h4 style="margin-top: 2em;">Story Points</h4>
+            <select id="size" placeholder="Select size..." style="width: 300px;" >
+              <option >easy
+              <option >way
+              <option >always
+              <option >easily
+            </select>
+
+
+        </div>
+</div>
+
+<div id="example1" role="application" style="float:left;width:49%;margin-right:0">
+		    <div id="select" class="demo-section k-content">
+
+            <h4 style="margin-top: 2em;">Value Points</h4>
+            <select id="size1" placeholder="Select size..." style="width: 300px;" >
+              <option >C++
+              <option >java
+              <option >jquery
+              <option >html
+              <option >css
+              <option >unix
+            </select>
+
+
+        </div>
+ </div>
+<div>
+  <label for="index">Priority Index</label>
+  <span class="label label" style="margin-top: .4em; display: inline; margin-left: 10px;background-color: rgb(231, 224, 224);">5.3</span>
+</div>
+
+ <div id="example" role="application" style="float:left;width:49%; margin-right:2%">
+  <div id="select" class="demo-section k-content">
+
+      <h4 style="margin-top: 2em;">Issue Type</h4>
+      <select id="size" placeholder="Select size..." style="width: 300px;" >
+        <option >easy
+        <option >way
+        <option >always
+        <option >easily
+      </select>
+
+
+  </div>
+</div>
+
+<div id="example1" role="application" style="float:left;width:49%;margin-right:0">
+  <div id="select" class="demo-section k-content">
+
+      <h4 style="margin-top: 2em;">Assigned To</h4>
+      <select id="size1" placeholder="Select size..." style="width: 300px;" >
+        <option >C++
+        <option >java
+        <option >jquery
+        <option >html
+        <option >css
+        <option >unix
+      </select>
+
+
+  </div>
+</div>
+ <div>Related Issue: <span class="text">Test Issue for wireframe create users #1110</span> </div>
+<div><label for="date">Scheduled Date</label>
+  <input type="date"></div>
+
+  <div>
+    <h4>Time Stats</h4>
+    <div>Estimated Time: <span class="line">8Hrs</span> </div>
+    <div>Elapsed Time: <span class="line">16 hrs 35 sec</span> </div>
+    <div>Start Date And Time: <span class="line">07/07/2020 12:35:00</span> </div>
+    <div>Completion Date And Time: <span class="line">07/07/2020 12:35:00</span> </div>
+
+  </div><br>
+
+  <div>
+    <label for="myfile">Attachments:</label>
+    <input type="file" id="myfile" name="myfile" value="Browse"><br><br>
+  </div>
+<div>
+  <h4>Other Details</h4>
+  <div>Project: <span class="text">Test Project</span> </div>
+  <div>Repository: <span class="text">Test Repository</span> </div>
+  <div>Sprint Test: <span class="text">sprint</span> </div>
+  <div>Current Status: <span class="text">Spring Backlog</span> </div>
+  <div>Clock Status: <span class="text">Not Started</span> </div>
+  <div>Project Priority: <span class="text">yes</span> </div>
+  <div>Pinned Status: <span class="text">yes</span> </div>
+</div>
+
+<div class="clr" style="padding-top: 10px;">
+  <button id="add" class="btn btn-primary">CREATE SUBTASK </button>
+<button id="add" class="btn btn-primary" >SHOW ACTIVITY</button>
+      </div>
+     </div>
+     <div>
+       <label for="task">Related Task</label>
+       <span class="label label" style="margin-top: .4em; display: inline; margin-left: 10px;">1123</span>
+       <span class="label label" style="margin-top: .4em; display: inline; margin-left: 10px;">994</span>
+       <span class="label label" style="margin-top: .4em; display: inline; margin-left: 10px;">12233</span>
+       <span class="label label" style="margin-top: .4em; display: inline; margin-left: 10px;">445</span>
+     </div>
   </clr-wizard-page>
 
   <clr-wizard-page>
-      <ng-template clrPageTitle>Page 2</ng-template>
-      <label for="name">id</label>
-      <input type="text" placeholder="enter id">
+      <ng-template clrPageTitle>Definition of Ready</ng-template>
+      <label for="story">Story Details</label>
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      <label for="story" >Acceptance Criteria</label><br>
+      scenario,given,when,then,and
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      Data,Expected Result, Expected Message
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      Functional Area,Business Rule,Pass/Fail details
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      scalibility
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      Test Case Demo Case
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      <div id="example" role="application" style="float:left;width:49%; margin-right:2%">
+		    <div id="select" class="demo-section k-content">
+
+            <h4 style="margin-top: 2em;">Estimates</h4>
+            <select id="size" placeholder="Select size..." style="width: 300px;" >
+              <option >easy
+              <option >way
+              <option >always
+              <option >easily
+            </select>
+
+
+        </div>
+</div>
+
+<div id="example1" role="application" style="float:left;width:49%;margin-right:0">
+		    <div id="select" class="demo-section k-content">
+
+            <h4 style="margin-top: 2em;">DoR Approval Status</h4>
+            <select id="size1" placeholder="Select size..." style="width: 300px;" >
+              <option >C++
+              <option >java
+              <option >jquery
+              <option >html
+              <option >css
+              <option >unix
+            </select>
+
+
+        </div>
+ </div>
+
+
+
+
   </clr-wizard-page>
 
   <clr-wizard-page>
-      <ng-template clrPageTitle>Page 3</ng-template>
-      <label for="date">date</label>
-      <input type="date">
-  </clr-wizard-page>
+    <ng-template clrPageTitle>Definition of Done</ng-template>
+    <div class="container">
+      <div class="checkbox-con off">
+        <input type="checkbox" />
+        <label>Git Commited</label>
+
+      </div>
+      <div class="checkbox-con two">
+        <input type="checkbox" checked />
+        <label>Code Quality Review Done</label>
+
+      </div>
+      <div class="checkbox-con off">
+        <input type="checkbox" />
+        <label>Peer Reviewed</label>
+
+      </div>
+      <div class="checkbox-con two">
+        <input type="checkbox" checked />
+        <label>Builds Without Error</label>
+
+      </div>
+    </div>
+    Unit Test Details
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      <div class="container">
+        <div class="checkbox-con off">
+          <input type="checkbox" />
+          <label>Promoted To Test Instance</label>
+
+        </div>
+        <div class="checkbox-con two">
+          <input type="checkbox" checked />
+          <label>Configuration Changes Implemented And Documented</label>
+
+        </div>
+      </div>
+      Unit Test Details
+      <textarea name="" id="" cols="10" rows="1"></textarea>
+      <div class="container">
+        <div class="checkbox-con off">
+          <input type="checkbox" />
+          <label>Closed For Clocking</label>
+
+        </div>
+
+      </div>
+      <div>
+        <label for="myfile">Attachments:</label>
+        <input type="file" id="myfile" name="myfile" value="Browse"><br><br>
+
+      </div>
+</clr-wizard-page>
+</form>
 </clr-wizard>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import{Drag} from 'src/app/models/drag';
 
@@ -18,14 +18,18 @@ export class DragdropComponent implements OnInit {
   public droppableObjects: Array<any> = [];
   public draggableObjects: Array<Array<any>> = [[], [], [],[]];
   open:boolean = false;
-
-
-
-
   rowSelected :any= {};
   modaladd=false;
-  addcolumn: number;
 
+
+
+  registerform= new FormGroup({
+    title:new FormControl('',[Validators.required,Validators.minLength(2)]),
+    description:new FormControl('',[Validators.required,Validators.minLength(2)]),
+    id:new FormControl('',[Validators.required]),
+    date:new FormControl('',[Validators.required]),
+name:new FormControl('',[Validators.required])
+    })
   constructor(
     ) { }
 
@@ -96,8 +100,8 @@ export class DragdropComponent implements OnInit {
 
 
     gotoadd(){
-      for (let i = 0; i < this.draggableElements-1; i++) {
 
+        let i=0
         // Define the droppable objects
         this.droppableObjects.push({
           data: {
@@ -107,7 +111,8 @@ export class DragdropComponent implements OnInit {
         });
 
 
-      }}
+      }
+
 gotoadd1(){
   let i=0;
   this.draggableObjects[i].push({
@@ -125,7 +130,7 @@ onSave() {
     zones: this.generateZones(i)
   })
 
-
+  console.log(this.registerform.value);
 }
 
 }
