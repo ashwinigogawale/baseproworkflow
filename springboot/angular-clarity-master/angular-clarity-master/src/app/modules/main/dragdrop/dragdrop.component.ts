@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { title } from 'process';
 import{Drag} from 'src/app/models/drag';
-
-
+import { CommonService } from './common.service';
 
 
 @Component({
@@ -20,7 +20,12 @@ export class DragdropComponent implements OnInit {
   open:boolean = false;
   rowSelected :any= {};
   modaladd=false;
-
+  openModal:any;
+//title=['todo'];
+userobj={
+  id:'',
+  title:''
+}
 
 
   registerform= new FormGroup({
@@ -30,10 +35,16 @@ export class DragdropComponent implements OnInit {
     date:new FormControl('',[Validators.required]),
 name:new FormControl('',[Validators.required])
     })
-  constructor(
+
+
+
+
+
+  constructor(private commonService:CommonService
     ) { }
 
   ngOnInit(): void {
+    this.getLatestUser();
     for (let i = 0; i < this.draggableElements; i++) {
       // Define the droppable objects
       this.droppableObjects.push({
@@ -86,6 +97,7 @@ name:new FormControl('',[Validators.required])
           name: event.data.name,
           currentColumn: event.zone.column
         },
+
         zones: this.generateZones(event.zone.column)
       });
 
@@ -96,6 +108,7 @@ name:new FormControl('',[Validators.required])
           this.draggableObjects[event.data.currentColumn].splice(i, 1);
         }
       }
+
     }
 
 
@@ -132,5 +145,22 @@ onSave() {
 
   console.log(this.registerform.value);
 }
+// related modal
+allUser:any;
+isEdit=false;
+settitle(formObj:any){
+this.openModal = false;
+console.log(formObj)
+  this.commonService.createUser(formObj).subscribe((response)=>{
+    this.getLatestUser();
+  })
+  }
+  getLatestUser(){
+
+    this.commonService.getAllUser().subscribe((response)=>{
+      this. allUser = response
+    })
+  }
+
 
 }

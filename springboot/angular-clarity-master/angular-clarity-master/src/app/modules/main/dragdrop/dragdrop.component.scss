@@ -6,6 +6,7 @@
   width: 200px;
   height: auto;
   background-color: #d6d6db;
+  color: #080808;
   display: inline-block;
   margin:  5px;
   padding: 15px;
@@ -26,7 +27,7 @@
   padding: 0x;
   padding-left: 8px;
 //width: auto;
- //background-color: white;
+ background-color: white;
   cursor: pointer;
  // margin-top: .2em;
   //box-shadow: 0 1px 3px rgba(0,0,0,.15);
@@ -72,7 +73,7 @@ input[type=text],[type=date], select,textarea {
 .board-wrapper {
   display: flex;
   flex-grow: 1;
-
+  //overflow-x: auto;
 }
   .board-columns {
       display: flex;
@@ -228,4 +229,11 @@ label{
 .line{
   border-bottom: 1px solid black;
 padding-bottom: 5px;
+}
+//title
+.title{
+  opacity: 0;
+}
+.title:hover{
+  opacity: 1;
 }

@@ -76,6 +76,7 @@ import { Gitfolder2Component } from './gitfolder2/gitfolder2.component';
 import { Edit2wireframeComponent } from './wireframe/edit2wireframe/edit2wireframe.component';
 import { DragdropComponent } from './dragdrop/dragdrop.component';
 import { DragComponent } from './drag/drag.component';
+import { FormioComponent } from './formio/formio.component';
 
 
 
@@ -99,6 +100,7 @@ const routes: Routes = [
 
       {path:'dragdrop',component:DragdropComponent},
       {path:'drag',component:DragComponent},
+      {path:'formio',component:FormioComponent},
 
 
       {path:'play',component:PlayComponent,

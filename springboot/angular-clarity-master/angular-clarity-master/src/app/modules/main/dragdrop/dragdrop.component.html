@@ -22,19 +22,16 @@
     <div [appDroppable]="dropZone"
          (onDroppableComplete)="onZoneDrop($event)">
 <div>
-  <span>  <label for="">todo</label></span>
-
-         <span class="add" style="float: right;">
+   <span  style="padding-right: 60px;"  (click)="openModal = true"  *ngFor="let user of allUser">{{user.title}}
+    <clr-icon shape="pencil" class="title"></clr-icon>
+  </span>
+           <span class="add" style="padding-left: 70px;">
           <cds-icon-button action="outline" status="success" (click)="gotoadd1()">
             <clr-icon shape="plus"></clr-icon>
         </cds-icon-button>
           </span> </div>
        <ng-container *ngFor="let draggableElement of draggableObjects[i]; let j = index;">
          <div [appDraggable]="draggableElement">
-          <div [appDraggable]="draggableElement">
-
-
-
 
             <div >
               <div  class="clr-row clr-align-items-start clr-justify-content-start"  >
@@ -69,7 +66,7 @@
               </div></div>
 
            </div>
-         </div>
+
        </ng-container>
     </div>
   </ng-container>
@@ -317,3 +314,19 @@
 </clr-wizard-page>
 </form>
 </clr-wizard>
+
+
+
+<clr-modal [(clrModalOpen)]="openModal" [clrModalSize]="'sm'">
+  <h3 class="modal-title">Change Card title</h3>
+
+  <div class="modal-body" >
+    <form #myForm="ngForm">
+    <input type="text" placeholder="Enter Title" id="title" name="title" [(ngModel)]="userobj.title" class="form-control">
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="openModal = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="settitle(myForm.value)">Ok</button>
+</div></form>
+  </div>
+</clr-modal>
