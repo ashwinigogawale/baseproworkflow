@@ -28,8 +28,8 @@ import { DropdownService } from './services/api/dropdown.service';
 import { WireframeService } from './services/api/wireframe.service';
 import { SuregitService } from './services/api/suregit.service';
 import { DragDropModule  } from '@angular/cdk/drag-drop';
-
-
+import { DndModule } from 'ngx-drag-drop';
+import { DndListModule } from 'ngx-drag-and-drop-lists';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,9 @@ import { DragDropModule  } from '@angular/cdk/drag-drop';
     LoginModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    DndModule,
+    DndListModule,
   ],
   providers: [
     MainService,

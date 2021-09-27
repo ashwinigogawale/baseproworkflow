@@ -35,6 +35,13 @@ export class DragComponent implements OnInit {
       'Walk dog'
     ])
   ]);
+
+
+
+
+
+
+
   ngOnInit(): void {
   }
   drop(event: CdkDragDrop<string[]>) {
