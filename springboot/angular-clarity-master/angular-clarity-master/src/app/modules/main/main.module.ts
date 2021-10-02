@@ -89,8 +89,9 @@ import { DroppableDirective } from './dragdrop/droppable.directive';
 import { DragService } from 'src/app/services/api/drag.service';
 import { DragComponent } from './drag/drag.component';
 import { FormioComponent } from './formio/formio.component';
-
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DndModule } from 'ngx-drag-drop';
+import { FormdragComponent } from './formdrag/formdrag.component';
 
 
 
@@ -103,7 +104,7 @@ import { FormioComponent } from './formio/formio.component';
     DraggableDirective,
     MainPageComponent, PageNotFoundComponent,
     AboutComponent, LayoutComponent,
-    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent, GitfolderComponent, GitfileComponent, Gitfolder1Component, Gitfile1Component, Gitfolder2Component, Edit2wireframeComponent, DragdropComponent, DragComponent, FormioComponent,
+    UserComponent, PreferenceComponent, CollegeComponent, PasswordResetComponent, ProductComponent, AllproductComponent, AddproductComponent, EditproductComponent, ManageViewComponent, TilesComponent, StepperComponent, Product1Component, UniversityComponent, Product2Component, Allproduct2Component, Addproduct2Component, Editproduct2Component, University1Component, Alluniversity1Component, Adduniversity1Component, Edituniversity1Component, WorkflowComponent, PlayComponent, AllPlayComponent, AddPlayComponent, EditplayComponent, Page11Component, ProjectSetupComponent, AddprojectsetupComponent, AllprojectsetupComponent, EditprojectsetupComponent, ReadonlyprojectsetupComponent, ModuleSetupComponent, AllmoduleSetupComponent, AddmoduleSetupComponent, EditmoduleSetupComponent, WireframeComponent, AllwireframeComponent, AddwireframeComponent, EditwireframeComponent, WireframetypeComponent, ActionsComponent, PropertiesComponent, UinameeditComponent, BiWidgetsComponent, AddWidgetsComponent, AllWidgetsComponent, ReportBuilderComponent, AllreportBuilderComponent, AddreportBuilderComponent, SelectBiComponent, EditreportBuilderComponent, ProjectSetup1Component, ProjectCardComponent, ModuleSetup1Component, ModuleCardComponent, WireframeCardComponent, Wireframe1Component, PropertyComponent, SuregitComponent, SuredocrComponent, SurefarmComponent, GitfolderComponent, GitfileComponent, Gitfolder1Component, Gitfile1Component, Gitfolder2Component, Edit2wireframeComponent, DragdropComponent, DragComponent, FormioComponent, FormdragComponent,
   ],
   imports: [
     CommonModule,
@@ -111,7 +112,10 @@ import { FormioComponent } from './formio/formio.component';
     ReactiveFormsModule,
     ClarityModule,
     HelperModule,
-    MainRoutingModule
+    MainRoutingModule,
+    DragDropModule,
+    DndModule,
+
   ],
   providers: [
     DragService

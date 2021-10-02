@@ -57,6 +57,7 @@ name:new FormControl('',[Validators.required])
       this.draggableObjects[i].push({
         data: {
           id: i,
+          orderid:1,
           payload: 'Some data you need to pass',
           name: 'Draggable item - ' + i,
           currentColumn: i,

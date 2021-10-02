@@ -77,6 +77,7 @@ import { Edit2wireframeComponent } from './wireframe/edit2wireframe/edit2wirefra
 import { DragdropComponent } from './dragdrop/dragdrop.component';
 import { DragComponent } from './drag/drag.component';
 import { FormioComponent } from './formio/formio.component';
+import { FormdragComponent } from './formdrag/formdrag.component';
 
 
 
@@ -101,6 +102,7 @@ const routes: Routes = [
       {path:'dragdrop',component:DragdropComponent},
       {path:'drag',component:DragComponent},
       {path:'formio',component:FormioComponent},
+      {path:'formdrag',component:FormdragComponent},
 
 
       {path:'play',component:PlayComponent,

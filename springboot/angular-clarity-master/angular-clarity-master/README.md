@@ -47,3 +47,6 @@ Modal
 sweetalert2
 ![sweetalert2](5.png)
 
+my info
+npx json-server --watch db.json'
+node app.js
