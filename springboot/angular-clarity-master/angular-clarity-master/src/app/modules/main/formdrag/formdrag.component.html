@@ -8,12 +8,12 @@
 
 
       <!--a draggable element-->
-      <div class="fields" *ngFor="let item of fieldModels">
+      <div class="fields" *ngFor="let item of fieldModels" >
         <div class="field pointer shadow-bg" [dndDraggable]="item"
         [dndEffectAllowed]="'copy'"
         (dndEnd)="onDragEnd($event)">
           <i [ngClass]="item.icon" class="fa pull-left"></i>
-          <h5>{{item.label}}</h5>
+          <h6>{{item.label}}</h6>
         </div>
       </div>
 
@@ -22,19 +22,21 @@
 
       <div class="form-group"
       style="margin-bottom: 0px !important; padding: 30px 60px 5px 60px;"
-      [style.backgroundColor]="model.theme.bgColor"
-      [style.color]="model.theme.textColor">
-
+     >
+      <h2><input class="form-control" type="text" [(ngModel)]="model.name" style="font-size: 20px;"/></h2>
+      <input class="form-control" type="text" [(ngModel)]="model.description" />
       </div>
 
       <!--a dropzone-->
       <!--to allow dropping content that is not [dndDraggable] set dndAllowExternal to true-->
-      <section dndDropzone style="background-color: #095d81; height: 600px;"
+      <section dndDropzone
       (dndDragover)="onDragover($event)"
       (dndDrop)="onDrop($event,model.attributes)" class="dndDropArea"
       [ngClass]="{'empty':model.attributes.length == 0}"
       [style.backgroundColor]="model.theme.bgColor"
       [style.color]="model.theme.textColor">
+
+
 
       <div class="field" *ngFor="let item of model.attributes;let i= index;"
         (dndStart)="onDragStart($event)"
@@ -48,7 +50,7 @@
             <!-- <i [ngClass]="item.icon" class="fa pull-left"></i>
             <h5>{{item.label}}
             <span *ngIf="item.required" class="red">*</span></h5> -->
-                  <div *ngIf="item.type=='text'">
+                  <div *ngIf="item.type=='text'" >
                     <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
                     <input type="text" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}" >
                   </div>
@@ -266,16 +268,38 @@
 <!-- <pre *ngIf="model">{{model|json}}</pre> -->
 
 
-<div *ngIf="model"
-class="container marginT60  marginB30"
+
+
+<div class="row">
+  <div class="col-12">
+      <div class="btn-cont">
+          <button (click)="openmodal()" class="btn btn-primary pull-left" style="background-color: #0072a3;margin-bottom: 20px;">Response</button>
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<clr-modal [(clrModalOpen)]="modal" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">
+
+  <div class="modal-body" >
+    <div *ngIf="model"
+class="container"
 style="max-width:500px;"
 >
 
 <div class="row"
-style="padding:30px;"
-[style.backgroundColor]="model.theme.bgColor"
-[style.color]="model.theme.textColor">
 
+>
+  <div class="col-12">
+    <h2>{{model.name}}</h2>
+  </div>
+  <div class="col-12">
+    <p>{{model.description}}</p>
+  </div>
   <div *ngIf="success" class="col-12">
     <div class="form-group">
     <label>Your form has been submitted.</label>
@@ -344,14 +368,14 @@ style="padding:30px;"
                 <input type="radio" [value]="v.value" name="{{item.name}}" [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}"> {{v.label}}
                 <span class="checkmark"></span>
               </label>
-            </div>+
+            </div>
         </div>
       <div *ngIf="item.type=='button'" class="btn-cont">
         <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}" class="btn btn-primary" id="{{item.name}}" >
       </div>
     </div>
 
-    <p (click)="show=1" class="marginT60 pointer"><b>Show developer data json</b></p>
+    <p (click)="show=1" class="marginT60 pointer">Show developer data</p>
 
   </div>
   </form>
@@ -361,3 +385,15 @@ style="padding:30px;"
 <pre *ngIf="show==1 && model">
     {{model|json}}
 </pre>
+
+
+
+
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="modal = false">Cancel</button>
+    <button type="submit"  class="btn btn-primary" >Delete</button>
+    </div>
+  </div>
+</clr-modal>

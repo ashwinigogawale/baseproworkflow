@@ -46,6 +46,7 @@
 .form-group .form-control{
     font-size:inherit;
     background-color: inherit;
+
 }
 
 .dndDropArea{
@@ -56,6 +57,7 @@
 .dndDropArea.empty{
     min-height:200px;
     border: dotted #ddd 2px;
+    margin-top: 30px;
 }
 
 .field{

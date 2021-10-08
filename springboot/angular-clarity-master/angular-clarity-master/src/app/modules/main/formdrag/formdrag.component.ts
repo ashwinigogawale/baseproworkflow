@@ -157,22 +157,21 @@ export class FormdragComponent implements OnInit {
       "type": "button",
       "icon":"fa-paper-plane",
       "subtype": "submit",
-      "label": "Submit"
+      "label": "Button"
     }
   ];
 
   modelFields:Array<field>=[];
   model:any = {
-    name:'App name...',
-    description:'App Description...',
+    name:'Form name...',
+    description:'Form Description...',
     theme:{
-      bgColor:"ffffff",
-      textColor:"555555",
+
       bannerImage:""
     },
     attributes:this.modelFields
   };
-
+  modal=false;
   report = false;
   reports:any = [];
 show:any;
@@ -339,5 +338,8 @@ show:any;
   }
 test(){
 
+}
+openmodal(){
+this.modal=true;
 }
 }
