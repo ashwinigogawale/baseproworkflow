@@ -78,6 +78,7 @@ import { DragdropComponent } from './dragdrop/dragdrop.component';
 import { DragComponent } from './drag/drag.component';
 import { FormioComponent } from './formio/formio.component';
 import { FormdragComponent } from './formdrag/formdrag.component';
+import { UpdateWireframeComponent } from './wireframe/update-wireframe/update-wireframe.component';
 
 
 
@@ -202,7 +203,8 @@ const routes: Routes = [
               { path: 'types', component: WireframetypeComponent },
 
               { path: 'edit/:id', component: EditwireframeComponent },
-              { path: 'edit2/:id', component: Edit2wireframeComponent },
+              { path: 'edit2/:hid', component: Edit2wireframeComponent },
+              { path: 'update/:id', component: UpdateWireframeComponent },
               { path: 'edit/:id/properties', component: PropertiesComponent },
               { path: 'edit/:id/property', component: PropertyComponent },
 

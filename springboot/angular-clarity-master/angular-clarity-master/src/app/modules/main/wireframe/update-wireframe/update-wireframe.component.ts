@@ -1,8 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AfterViewInit, NgZone } from '@angular/core';
-import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit, AfterViewInit, NgZone } from '@angular/core';
 import { field, value } from 'src/app/global.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { FormbuilderService } from 'src/app/services/api/formbuilder.service';
@@ -10,13 +6,19 @@ import { FormdragAttributeService } from 'src/app/services/api/formdrag-attribut
 import { FormdragValueService } from 'src/app/services/api/formdrag-value.service';
 import { FormfragModalService } from 'src/app/services/api/formfrag-modal.service';
 import { WireframeLineService } from 'src/app/services/api/wireframe-line.service';
+// import { AfterViewInit, NgZone } from '@angular/core';
+import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 declare var $: any;
+
 @Component({
-  selector: 'app-edit2wireframe',
-  templateUrl: './edit2wireframe.component.html',
-  styleUrls: ['./edit2wireframe.component.scss']
+  selector: 'app-update-wireframe',
+  templateUrl: './update-wireframe.component.html',
+  styleUrls: ['./update-wireframe.component.scss']
 })
-export class Edit2wireframeComponent implements OnInit, AfterViewInit {
+export class UpdateWireframeComponent implements OnInit, AfterViewInit {
+
   formBuilder: any;
 
   value: value = {
@@ -189,6 +191,7 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
   }
 
   wflineget = {
+    id: '',
     header_id: '',
     model: ''
   }
@@ -199,7 +202,7 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
   show: any;
 
   id: any;
-
+  oneLine: any;
 
   constructor(
     private ngZone: NgZone,
@@ -214,33 +217,28 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     private _line: WireframeLineService
   ) { }
 
-
   ngOnInit(): void {
 
-    this.id = this._route.snapshot.params.hid;
-    console.log(this.id);
-    
+    this.id = this._route.snapshot.params.id;
 
-    this._line.getOneFromDBById(378).subscribe(
+    this._line.getAllLines().subscribe(
       (data: any)=>{
-        // this.wflineget = data;
-        // console.log(this.wflineget);
-        const d = JSON.parse(data.model);
-        this.wflineget.header_id = data.header_id;
-        this.wflineget.model = d;
-        this.model1 = d;
-
-        console.log(this.wflineget);
+        for(let val of data){
+          if(val.header_id == this.id){
+            this.wflineget = val;
+            this.model1 = JSON.parse(val.model);
+          }
+          
+        }
+        console.log(this.oneLine);
         
       },
       (error: any)=>{
-        console.log('error occured while getting data...');
-        
+
       }
     );
-
+    
   }
-
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -255,26 +253,6 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     }, 2000)
 
 
-  }
-
-  saveData() {
-    let data = this.formBuilder.actions.getData();
-    let formData = this._formService.createFormName(data);
-    this._formService.addForm(formData).subscribe(
-      response => {
-        console.log(response);
-        this.clearData();
-        this.router.navigate(['/form-list']);
-      },
-      error => {
-        console.log(<any>error);
-      });
-  }
-  clearData() {
-    this.formBuilder.actions.clearFields();
-  }
-  showData() {
-    this.formBuilder.actions.showData();
   }
 
   onDragStart(event: DragEvent) {
@@ -327,19 +305,6 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
   }
 
   async removeField(i) {
-    // swal({
-    //   title: 'Are you sure?',
-    //   text: "Do you want to remove this field?",
-    //   type: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonColor: '#00B96F',
-    //   cancelButtonColor: '#d33',
-    //   confirmButtonText: 'Yes, remove!'
-    // }).then((result) => {
-    //   if (result.value) {
-    //     this.model.attributes.splice(i,1);
-    //   }
-    // });
     const confirmed: any = await this.alertService.confirm('', 'Delete confirm?');
     if (confirmed.value) {
       this.model1.attributes.splice(i, 1);
@@ -357,11 +322,6 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     input.append('bgColor', this.model1.theme.bgColor);
     input.append('textColor', this.model1.theme.textColor);
     input.append('attributes', JSON.stringify(this.model1.attributes));
-
-    // this.us.putDataApi('/admin/updateForm',input).subscribe(r=>{
-    //   console.log(r);
-    //   swal('Success','App updated successfully','success');
-    // });
   }
 
   initReport() {
@@ -369,17 +329,7 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     let input = {
       id: this.model1._id
     }
-    // this.us.getDataApi('/admin/allFilledForms',input).subscribe(r=>{
-    //   this.reports = r.data;
-    //   console.log('reports',this.reports);
-    //   this.reports.map(records=>{
-    //     return records.attributes.map(record=>{
-    //       if(record.type=='checkbox'){
-    //         record.value = record.values.filter(r=>r.selected).map(i=>i.value).join(',');
-    //       }
-    //     })
-    //   });
-    // }); 
+
   }
 
   toggleValue(item) {
@@ -421,13 +371,7 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     input.append('formId', this.model1._id);
     // input.append('formId', this.model.aId);
     input.append('attributes', JSON.stringify(this.model1.attributes))
-    // this.us.postDataApi('/user/formFill',input).subscribe(r=>{
-    //   console.log(r);
-    //   swal('Success','You have contact sucessfully','success');
-    //   this.success = true;
-    // },error=>{
-    //   swal('Error',error.message,'error');
-    // });
+
   }
 
   test() {
@@ -437,30 +381,18 @@ export class Edit2wireframeComponent implements OnInit, AfterViewInit {
     this.modal = true;
   }
 
-  addModal(){
-    console.log('Add button clicked...');
-    
+  updateModal(){
     console.log(this.model1);
 
-    this.wfline.header_id = this.id;
-    this.wfline.model = JSON.stringify(this.model1);
-
-    console.log(this.wfline);
-    
-
-    this._line.addToDB(this.wfline).subscribe(
+    this.wflineget.model = JSON.stringify(this.model1);
+    this._line.updateOneLine(this.wflineget).subscribe(
       (data: any)=>{
-        console.log('Data pushed successfully...');
-        console.log(data);
-        this.modal = false;
+        console.log('Updation Successful...');
         this.ngOnInit();
-      },
-      (error: any)=>{
-        console.log('Error in adding data...');
-        
+        this.modal = false;
+        // this.router.navigate(["../../../../wireframe"], { relativeTo: this._route });
       }
     );
+  }
 
-    
-  }  
 }

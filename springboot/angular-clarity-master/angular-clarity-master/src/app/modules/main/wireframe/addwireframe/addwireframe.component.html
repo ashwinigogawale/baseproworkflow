@@ -11,7 +11,8 @@
     <div class="row">
       <div class="clr-col-md-4 clr-col-sm-12">
         <label for="from_project">From Project</label>
-        <select id="from_project" formControlName="from_projectId" selected="null" (change)="changeModule($event.target.value)" class="clr-dropdown">
+        <select id="from_project" formControlName="from_projectId" selected="null"
+          (change)="changeModule($event.target.value)" class="clr-dropdown">
           <option value="null">Choose Project</option>
           <option *ngFor="let project of projects" [value]="project.id">{{ project.name | uppercase }}
         </select>
@@ -19,7 +20,8 @@
 
       <div class="clr-col-md-4 clr-col-sm-12">
         <label for="from_module">From Module</label>
-        <select id="from_module" formControlName="from_moduleId" selected="null" (change)="changeWireFrame($event.target.value)" class="clr-dropdown">
+        <select id="from_module" formControlName="from_moduleId" selected="null"
+          (change)="changeWireFrame($event.target.value)" class="clr-dropdown">
           <option value="null">Choose Module</option>
           <option *ngFor="let module of modules" [value]="module.id">{{ module.name | uppercase }}
           </option>
@@ -27,7 +29,7 @@
       </div>
       <div class="clr-col-md-4 clr-col-sm-12">
         <label for="from_WireFrame">From Component</label>
-        <select id="from_WireFrame" formControlName="from_WireFrameId" selected="null"  class="clr-dropdown">
+        <select id="from_WireFrame" formControlName="from_WireFrameId" selected="null" class="clr-dropdown">
           <option value="null">Choose Wireframe</option>
           <option *ngFor="let wireframe of wireframes" [value]="wireframe.id">{{ wireframe.name | uppercase }}
           </option>
@@ -104,6 +106,7 @@
     <div class="center">
       <button type="submit" class="btn btn-primary" [disabled]="!entryForm.valid">SUBMIT</button>
       <button type="submit" class="btn btn-primary" (click)="submit2()">SUBMIT2</button>
+      <button type="submit" class="btn btn-primary" (click)="submit2()">SUBMIT3</button>
     </div>
 
   </form>

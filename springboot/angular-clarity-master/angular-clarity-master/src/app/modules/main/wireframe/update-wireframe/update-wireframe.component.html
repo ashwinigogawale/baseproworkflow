@@ -229,9 +229,11 @@
 				<div class="dndPlaceholder" dndPlaceholderRef>
 				</div>
 			</section>
+
 			<div class="save-btn-div" dir="rtl">
-				<button type="submit" class="btn btn-outline" (click)="addModal()"><b>SAVE</b></button>
+				<button type="submit" class="btn btn-outline" (click)="updateModal()"><b>UPDATE</b></button>
 			</div>
+
 		</div>
 	</div>
 </div>
@@ -410,27 +412,7 @@
 
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline" (click)="modal = false">Cancel</button>
-			<button type="submit" class="btn btn-primary" (click)="addModal()">Add</button>
+			<button type="submit" class="btn btn-primary" (click)="updateModal()">Update</button>
 		</div>
 	</div>
 </clr-modal>
-
-
-<!-- <1div class="card" style="padding-bottom: 25px;">
-	<div class="card-block">
-		<div>
-			<div id="fb-editor" class="build-wrap" style="padding: 30px;"></div>
-		</div>
-
-
-		
-
-
-		<div class="" style="padding-left: 30px;">
-			<button class="btn btn-danger btn-sm" id="trash" (click)="clearData()">Trash all fields</button>
-			<button class="btn btn-success btn-sm" id="show-data" (click)="showData()">Show Data</button>
-			<button class="btn btn-primary btn-sm" id="save-data" (click)="saveData()">Save Data</button>
-			<button class="btn btn-success btn-sm" *ngIf="edit" id="update-data" (click)="updateData()">Update Data</button>
-		</div>
-	</div>
-</div> -->

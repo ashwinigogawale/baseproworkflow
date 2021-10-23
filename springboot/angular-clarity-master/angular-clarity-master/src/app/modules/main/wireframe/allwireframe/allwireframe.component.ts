@@ -8,6 +8,7 @@ import { WireframeService } from 'src/app/services/api/wireframe.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import { WireframeLineService } from 'src/app/services/api/wireframe-line.service';
 @Component({
   selector: 'app-allwireframe',
   templateUrl: './allwireframe.component.html',
@@ -27,6 +28,11 @@ export class AllwireframeComponent implements OnInit {
   moduleId: number;
   wireFrames: Rn_Fb_Header[];
   selected: any[] = [];
+
+  id: any;
+  allLines: any;
+  lineOfHeader: Array<any>;
+
   constructor(
     private _fb: FormBuilder,
     private router: Router,
@@ -36,7 +42,10 @@ export class AllwireframeComponent implements OnInit {
     private wireframeService: WireframeService,
     private alertService: AlertService,
     private toastr: ToastrService,
-  ) { }
+    private _line: WireframeLineService
+  ) {
+    this.lineOfHeader = new Array<any>();
+  }
 
   ngOnInit(): void {
     this.moduleId = this.wireframeService.getModuleId(); // get from session storage
@@ -68,6 +77,26 @@ export class AllwireframeComponent implements OnInit {
   goToEdit2(id: number,editmode: string) {
     this.router.navigate(["../project/modules/wireframe/edit2/" + id], { relativeTo: this.route });
 
+  }
+
+  update(id: any,editmode: string) {
+    this.router.navigate(["../project/modules/wireframe/update/" + id], { relativeTo: this.route });
+    this._line.getAllLines().subscribe(
+      (data: any)=>{
+        this.allLines = data;
+        for(let line of data){
+          if(line.header_id == id){
+            this.lineOfHeader.push(line);
+          }
+        }
+        console.log(this.lineOfHeader);
+
+      },
+      (error: any)=>{
+        console.log('Error occured while getting all lines data...');
+
+      }
+    );
   }
   onExport() {
     this.excel.exportAsExcelFile(this.rows, 'user_',
