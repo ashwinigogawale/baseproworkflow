@@ -5,7 +5,7 @@ import baseUrl from './helper';
 @Injectable({
   providedIn: 'root'
 })
-export class BoardServiceService { 
+export class BoardServiceService {
 
   constructor(
     private _http: HttpClient
