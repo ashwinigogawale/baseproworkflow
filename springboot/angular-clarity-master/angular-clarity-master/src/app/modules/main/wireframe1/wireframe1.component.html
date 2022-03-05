@@ -12,6 +12,6 @@
   </button>
 
 </div>
-<app-wireframe-card *ngIf="gridViewIsActive" [apps]="apps"></app-wireframe-card>
-<app-allwireframe *ngIf="!gridViewIsActive" [apps]="apps" (deletedApp)="loadApps()"></app-allwireframe>
+<app-wireframe-card *ngIf="!gridViewIsActive" [apps]="apps"></app-wireframe-card>
+<app-allwireframe *ngIf="gridViewIsActive" [apps]="apps" (deletedApp)="loadApps()"></app-allwireframe>
 

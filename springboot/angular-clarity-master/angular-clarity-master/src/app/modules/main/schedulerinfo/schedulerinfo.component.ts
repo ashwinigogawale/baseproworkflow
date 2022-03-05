@@ -23,7 +23,7 @@ export class SchedulerinfoComponent implements OnInit {
     this.entryForm = this._fb.group({
     counter: [null],
     gapDuration: [null],
-    startTime: [null],
+    startTimeString: [null],
     jobName:[null],
     jobGroup: [null]
       });

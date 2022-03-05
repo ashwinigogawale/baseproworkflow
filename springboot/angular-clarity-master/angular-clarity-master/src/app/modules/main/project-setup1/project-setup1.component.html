@@ -12,6 +12,6 @@
   </button>
 
 </div>
-<app-project-card *ngIf="gridViewIsActive" [apps]="apps"></app-project-card>
-<app-allprojectsetup *ngIf="!gridViewIsActive" [apps]="apps" (deletedApp)="loadApps()"></app-allprojectsetup>
+<app-project-card *ngIf="!gridViewIsActive" [apps]="apps"></app-project-card>
+<app-allprojectsetup *ngIf="gridViewIsActive" [apps]="apps" (deletedApp)="loadApps()"></app-allprojectsetup>
 

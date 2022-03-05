@@ -16,7 +16,7 @@ export class SchedulerpipeComponent implements OnInit {
     private _fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.mainservice.getAll().subscribe((data) => {
+    this.mainservice.getAllpipe().subscribe((data) => {
       console.log(data);
       this.alldata = data;
     });
