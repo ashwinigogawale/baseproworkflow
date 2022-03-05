@@ -19,10 +19,10 @@
         </button>
 
       </div>
-      <div style="float: right;">
+     <!-- <div style="float: right;">
         <button class="btn btn-primary"  (click)="goToAdd()"> <clr-icon shape="plus"></clr-icon>ADD</button>
 
-      </div>
+      </div>-->
       <app-module-card *ngIf="gridViewIsActive" [apps]="apps"></app-module-card>
       <app-allmodule-setup *ngIf="!gridViewIsActive" [apps]="apps" (deletedApp)="loadApps()"></app-allmodule-setup>
 

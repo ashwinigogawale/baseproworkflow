@@ -79,6 +79,9 @@ import { DragComponent } from './drag/drag.component';
 import { FormioComponent } from './formio/formio.component';
 import { FormdragComponent } from './formdrag/formdrag.component';
 import { UpdateWireframeComponent } from './wireframe/update-wireframe/update-wireframe.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
+import { SchedulerpipeComponent } from './schedulerpipe/schedulerpipe.component';
+import { SchedulerinfoComponent } from './schedulerinfo/schedulerinfo.component';
 
 
 
@@ -94,6 +97,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'user', pathMatch: 'full' },
       { path: 'main', component: MainPageComponent },
       { path: 'user', component: UserComponent},
+      {path: 'scheduler', component:  SchedulerComponent},
+      {path: 'pipeline', component:  SchedulerpipeComponent},
+      {path: 'scheduleinfo', component:  SchedulerinfoComponent},
       {path:'college',component:CollegeComponent},
       {path:'product1',component:Product1Component},
       {path:'university',component:UniversityComponent},

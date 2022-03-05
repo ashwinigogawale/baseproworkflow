@@ -47,6 +47,7 @@ Modal
 sweetalert2
 ![sweetalert2](5.png)
 
-my info
-npx json-server --watch db.json'
+my info=npx json-server --watch db.json'
+
+goto server folder and start server below cmd
 node app.js

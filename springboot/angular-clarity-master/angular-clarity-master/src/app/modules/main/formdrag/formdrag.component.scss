@@ -1,3 +1,26 @@
+
+// :host {
+
+//     display: block;
+//     box-sizing: border-box;
+//   }
+  
+//   mat-card {
+  
+//     transition: transform 200ms, opacity 200ms;
+//   }
+  
+//   .dndDraggingSource {
+  
+//     opacity: .5;
+//     transform: scale(.98);
+//   }
+
+
+// ----------------------------------------------------------------------
+
+
+
 @import"./bootstrap/bootstrap.min.css";
 
 
@@ -50,28 +73,46 @@
 }
 
 .dndDropArea{
-    padding: 10px;
-    /* border: dotted #ddd 2px; */
+    padding-bottom: 15px;
+    // border: dotted #ddd 2px;
+    // border-bottom: none;
 }
 
 .dndDropArea.empty{
-    min-height:200px;
-    border: dotted #ddd 2px;
-    margin-top: 30px;
+    min-height: 20rem;
+    margin-top: 5px;
+    border: dashed #ddd 2px;
+}
+.fields {
+    background-color: #e4e1e1;
+}
+div{
+    // padding:0px !important;
+    margin-top:1px !important;
+    margin-bottom:1px !important;
+}
+input[type=text],[type=date],[type=email],[type=number],[type=phone],[type=datetime-local], textarea {
+    background-color : rgb(255, 255, 255) !important; 
 }
 
 .field{
-    padding:5px;
-    margin-bottom:10px;
+    // padding:0.01px !important;
+    // margin-bottom:0.1px !important;
     position: relative;
-    color: rgb(170, 167, 167);
+    color: rgb(0, 0, 0);
+    background-color: #e4e1e1;
 }
 .field:hover{
     box-shadow: 1px 1px 4px #ddd;
 }
+
 .toggle-Wrapper{
     padding: 15px;
     background: #d6d6d629;
+}
+.iconpadding {
+    margin-bottom: -12px !important;
+    margin-top: -0.5px !important;
 }
 .dndHandle{
     cursor: pointer;
@@ -81,8 +122,7 @@
     opacity:0.3;
 }
 .dndPlaceholder{
-    background: rgb(206, 238, 238); border-radius: 2px; padding: 20px;
-    margin-bottom:10px;
+    background-color: black;
 }
 .field .fa{
     width: 30px;
@@ -91,6 +131,18 @@
     font-size: 24px;
     vertical-align: middle;
 
+}
+.w-100 {
+    width: 100% !important;
+}
+.w-50 {
+    width: 49% !important;
+}
+.w-33 {
+    width: 32% !important;
+}
+.w-25 {
+    width: 25% !important;
 }
 .red{color:#d9534f}
 .fa-trash{color:#d9534f}
@@ -124,4 +176,64 @@
     height: 25px;
     background: white;
     border: none;
+}
+
+.labelPadding {
+    padding-left: 20px;
+    margin-bottom: -12px !important;
+    margin-top: -6px !important;
+}
+input.form-control {
+    height:33px !important;
+ }
+input[type=email] {
+    margin-top: -7px;
+}
+
+.colPadding {
+    padding-left: 20px !important;
+    padding-bottom: 5px !important;
+}
+.container-fluid {
+    margin: 0% !important;
+    padding: 0% !important;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+
+.flex-container {
+    display: flex;
+    // flex-direction: row;
+    flex-wrap:wrap;
+  }
+  .flex-container > div {
+    margin:4px;
+  }
+  body {
+    filter: grayscale(100%);
+}
+.text {
+   font-weight: 100; font: 1.25em sans-serif; color: hsl(196.2, 100%, 35.7%);
+}
+.icon {
+    color: black; font-weight: 900; filter: grayscale(100%);
+}
+
+.tableData { 
+    font-size: large; 
+    font: 1.5em sans-serif; 
+    padding-top: 0% !important; 
+    padding-bottom: 0% !important;
+    text-align: center;
+    color: #000;
+}
+.grid {
+    color: black; 
+    font: 1.5em sans-serif; 
+    font-size: large; 
+    margin-top: 0.2px !important;
+    padding-left: 10px;
 }

@@ -17,14 +17,16 @@ export class field{
   max?:number;
   inline?:any;
   value?:any;
+  size?:any;
   values?:Array<value>;
+  div_name?:any;
+  gridLine_name?:any;
+  children?: field[];
 }
-
 export class value{
   label?:any="";
   value?:any="";
 }
-
 export interface IProperty {
   url?: string;
   loading?: boolean;
