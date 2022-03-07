@@ -88,20 +88,20 @@ export class AddprojectsetupComponent implements OnInit {
     if (this.entryForm.invalid) {
       return;
     }
-    //this.onCreate();
+    this.onCreate();
   }
 // add project temporrary commit
 
-  //onCreate() {
-    //this.errorFields = [];
-    //this.projectSetupService.create(this.entryForm.value).subscribe(
-      //(data) => {
-        //console.log(data);
-       //this.router.navigate(["../../project1"], { relativeTo: this.route });
-      //},
+  onCreate() {
+    this.errorFields = [];
+    this.projectSetupService.create(this.entryForm.value).subscribe(
+      (data) => {
+        console.log(data);
+       this.router.navigate(["../../project1"], { relativeTo: this.route });
+      },
 
-    //);
-  //}
+    );
+  }
 
   // need modification
   projects: DropDown[];
