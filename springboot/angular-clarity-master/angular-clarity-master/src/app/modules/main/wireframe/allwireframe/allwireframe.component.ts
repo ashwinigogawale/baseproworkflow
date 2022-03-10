@@ -9,6 +9,7 @@ import { ExcelService } from 'src/app/services/excel.service';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { WireframeLineService } from 'src/app/services/api/wireframe-line.service';
+import { Rn_Fb_Lines } from 'src/app/models/Rn_Fb_Lines';
 @Component({
   selector: 'app-allwireframe',
   templateUrl: './allwireframe.component.html',
@@ -28,11 +29,11 @@ export class AllwireframeComponent implements OnInit {
   moduleId: number;
   wireFrames: Rn_Fb_Header[];
   selected: any[] = [];
-
+  fbHeader: Rn_Fb_Header;
   id: any;
   allLines: any;
   lineOfHeader: Array<any>;
-
+  fbLine: Rn_Fb_Lines;
   constructor(
     private _fb: FormBuilder,
     private router: Router,
@@ -48,6 +49,8 @@ export class AllwireframeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fbLine = new Rn_Fb_Lines();
+    this.id = this.route.snapshot.params["id"]; // fb_header_id
     this.moduleId = this.wireframeService.getModuleId(); // get from session storage
     console.log(this.moduleId);
 
@@ -117,7 +120,36 @@ export class AllwireframeComponent implements OnInit {
         this.ngOnInit();
       },
     );
+  }
+  buildDynamicForm(data) {
+    this.fbHeader = data;
+    console.log(data);
+    let techStack = this.fbHeader.techStack;
+    let objectType = this.fbHeader.objectType;
+    let subObjectType = this.fbHeader.subObjectType;
+    var re = /-/gi;
+    var str = "Spring-mvc";
+    var newstr = str.replace(re, "_");
+    //console.log("id ",this.id);
+console.log("id",data.id);
+    console.log("new string::",newstr);
 
+    console.log("tech stack::",techStack);
 
+    let actionLink =
+      techStack + "_" + objectType + "_" + subObjectType + "_Builder";
+    actionLink = actionLink.replace(" ", "_");
+    actionLink = actionLink.replace(re, "_");
+    console.log("tech stack after::",actionLink);
+    console.log("Dynamic Builder Action Link : ", actionLink);
+
+    this.wireframeService.dynamicBuilder(data.id, actionLink).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

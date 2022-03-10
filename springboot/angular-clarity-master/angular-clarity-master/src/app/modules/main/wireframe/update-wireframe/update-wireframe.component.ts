@@ -18,15 +18,15 @@ declare var $: any;
   styleUrls: ['./update-wireframe.component.scss']
 })
 export class UpdateWireframeComponent implements OnInit, AfterViewInit {
-   
-  
+
+
   value:value={
     label:"",
     value:""
   };
   oneLine: any;
   success = false;
-  id: any; 
+  id: any;
   i1 : any;
   div_name_map = new Map();
   new_model: any = [];
@@ -58,7 +58,7 @@ export class UpdateWireframeComponent implements OnInit, AfterViewInit {
       "gridLine_name" : "",
       "handle":true
     },
-    { 
+    {
       "type": "email",
       "icon": "fa-envelope",
       "required": true,
@@ -301,16 +301,16 @@ wfline = {
 }
 formBuilder: any;
   constructor(
-   
+
     private ngZone: NgZone,
-    private _route: ActivatedRoute,  
+    private _route: ActivatedRoute,
     private alertService: AlertService,
     private toastr: ToastrService,
     private _line: WireframeLineService
   ) { }
 
   ngOnInit(): void {
-   
+
     this.id = this._route.snapshot.params.id;
 
     this._line.getAllLines().subscribe(
@@ -320,20 +320,23 @@ formBuilder: any;
             this.wflineget = val;
             this.model = JSON.parse(val.model);
           }
-          
+
         }
         console.log(this.oneLine);
-        
+
       },
       (error: any)=>{
 
       }
     );
+
     this.copy_value();
+
   }
+
   ngAfterViewInit(): void {
     setTimeout(() => {
-      
+
 
       this.ngZone.runOutsideAngular(() => {
         //$(document.getElementById('fb-editor')).formBuilder();
@@ -362,7 +365,7 @@ formBuilder: any;
     this.updateModal();
   }
   updateModal(){
-    
+
     this.wflineget.model = JSON.stringify(this.model);
     this._line.updateOneLine(this.wflineget).subscribe(
       (data: any)=>{
@@ -380,7 +383,7 @@ formBuilder: any;
     this.div_coll.clear();
     this.new_model = [];
     for(let i = 0; i< this.model.attributes.length; i++) {
-      this.new_model[j1++] = this.model.attributes[i];  
+      this.new_model[j1++] = this.model.attributes[i];
       if(this.model.attributes[i].type == 'Division') {
         i++;
         let j=i;
@@ -421,7 +424,7 @@ formBuilder: any;
           header_gridline_name_data[ind] = "";
           ind++;
           i++;
-          
+
         }
         if(j == this.model.attributes.length) {
           this.div_coll.set(j1 - 1, header_gridline_name);
@@ -432,7 +435,7 @@ formBuilder: any;
     }
   }
   addModal(){
-    
+
     this.wfline.header_id = this.id;
     this.wfline.model = JSON.stringify(this.model);
 
@@ -445,12 +448,12 @@ formBuilder: any;
       },
       (error: any)=>{
         console.log('Error in adding data...');
-        
+
       }
     );
 
-    
-  }  
+
+  }
 
   onDrop2($event, item) {
 
@@ -493,7 +496,7 @@ formBuilder: any;
       if( typeof index === "undefined" ) {
         index = list.length;
       }
-      
+
       list.splice( index, 0, event.data );
       console.log(list)
       // this.model.attributes[index].children =  [];
@@ -566,7 +569,7 @@ formBuilder: any;
         return arrC;
       }
       else if(arrC[k].type == 'Division' || arrC[k].type == 'Grid Lines') {
-        arrC[k].children = this.helper(arrC[k].children, val); 
+        arrC[k].children = this.helper(arrC[k].children, val);
       }
     }
     return arrC;

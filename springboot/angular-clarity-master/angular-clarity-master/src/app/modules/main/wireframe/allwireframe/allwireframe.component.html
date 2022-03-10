@@ -24,7 +24,7 @@
 
 
   <clr-datagrid [clrDgLoading]="loading" [(clrDgSelected)]="selected">
-    <clr-dg-placeholder>user not found!<clr-spinner>Loading ...</clr-spinner></clr-dg-placeholder>
+    <clr-dg-placeholder>user not found</clr-dg-placeholder>
 
     <clr-dg-column [clrDgField]="'uiName'"> <ng-container *clrDgHideableColumn="{hidden: false}">
       uiName
@@ -47,7 +47,7 @@
         <button class="action-item" (click)="goToEdit2(user.id)">Edit2 <clr-icon shape="edit" class="is-error"></clr-icon></button>
         <button class="action-item" (click)="update(user.id)">Update<clr-icon shape="edit" class="is-error"></clr-icon></button>
         <button class="action-item" (click)="onDelete(user)">Delete<clr-icon shape="trash" class="is-error"></clr-icon></button>
-
+        <button  class="action-item" type="button"  (click)="buildDynamicForm(user)">Build</button>
       </clr-dg-action-overflow>
 
       <clr-dg-row-detail *clrIfExpanded >

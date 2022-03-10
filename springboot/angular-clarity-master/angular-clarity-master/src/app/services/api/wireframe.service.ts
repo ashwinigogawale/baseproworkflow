@@ -170,8 +170,8 @@ export class WireframeService {
   private baseURl: string = 'api';
   dynamicBuilder(headerId: number, actionLink: string) {
     let params: HttpParams = new HttpParams();
-    params = params.append("header_id", headerId.toString());
-    return this.apiRequest.get("api/"+actionLink, params);
+    params = params.append("header_id", headerId?.toString());
+    return this.apiRequest.get("api/wireframe_builder_json_controller"+actionLink, params);  // first  return this.apiRequest.get("api/"+actionLink, params);
   }
 
   //============= MANUPULATE WIREFRAME PROPERTIES ===============//
