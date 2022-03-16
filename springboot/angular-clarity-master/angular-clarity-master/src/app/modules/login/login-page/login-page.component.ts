@@ -28,7 +28,9 @@ export class LoginPageComponent implements OnInit {
    // this.userRegistrationService.removeSignedUpUserInfo();
     //this.userRegistrationService.removeStoredEmail();
   }
-
+  goToLogin1(){
+    window.location.href = 'http://localhost:4200/#/create-account';
+  }
   onLogin() {
     // tslint:disable-next-line:max-line-length
     this.loginService.getToken(this.model.email, this.model.password)

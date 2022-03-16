@@ -82,6 +82,8 @@ import { UpdateWireframeComponent } from './wireframe/update-wireframe/update-wi
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { SchedulerpipeComponent } from './schedulerpipe/schedulerpipe.component';
 import { SchedulerinfoComponent } from './schedulerinfo/schedulerinfo.component';
+import { WebservicesComponent } from './webservices/webservices.component';
+import { OauthComponent } from './oauth/oauth.component';
 
 
 
@@ -105,6 +107,8 @@ const routes: Routes = [
       {path:'university',component:UniversityComponent},
       {path:'stepper',component:StepperComponent},
       {path:'workflow',component:WorkflowComponent},
+      {path: 'webservices profile', component:WebservicesComponent},
+      {path: 'oauth', component:OauthComponent},
 
       {path:'dragdrop',component:DragdropComponent},
       {path:'drag',component:DragComponent},

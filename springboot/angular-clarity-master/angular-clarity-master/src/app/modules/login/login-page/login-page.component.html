@@ -35,8 +35,8 @@
       <button [disabled]="!model.email || !model.password" type="submit" class="btn btn-primary"
         (click)="onLogin()">Login</button>
       <!--<a href="javascript://" class="signup">Sign up for a Company ID</a>-->
-      <a routerLink="/create-account" class="signup">create account </a>
-        <a routerLink="/create-account" class="signup">forgot password </a>
+      <a (click)="goToLogin1()" class="signup">create account </a>
+        <a (click)="goToLogin1()" class="signup">forgot password </a>
     </div>
   </form>
 </div>

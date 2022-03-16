@@ -1,0 +1,113 @@
+
+
+
+
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Account Users</button>
+    <clr-tab-content *clrIfActive>
+      Dashboard content
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Groups</button>
+    <clr-tab-content *clrIfActive="true">
+      Management content
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Webservices Profiles</button>
+    <clr-tab-content *clrIfActive="true"><br>
+      <ol class="breadcrumb breadcrumb-arrow font-trirong">
+        <li><a href="javascript://" [routerLink]="['/']">Webservices profile</a></li>
+        <li><a href="javascript://"> profile1</a></li>
+      </ol>
+
+
+        <div class="container">
+          <form >
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">Protocol:</label>
+              </div>
+              <div class="col-75">
+               <label for="">REST</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">Token Endpoint URL:</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="token" name="token" placeholder="ENTER URL">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="lname">Documentation URl:</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="doc" name="doc" placeholder="ENTER URL">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="country">Client ID:</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="id" name="id" placeholder="ENTER ID">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Client Secret:</label>
+              </div>
+              <div class="col-75">
+                <input id="secret" type="text" name="secret" placeholder=" ENTER SECRET">
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-75" style="margin-left: 310px;">
+               <button>Regenerate Client ID/Secret</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Permission:</label>
+              </div>
+              <div class="col-75">
+                <input type="checkbox" checked> Enable access to all objects<br>
+                <input type="checkbox" checked> Profile can create objects
+              </div>
+            </div>
+            <h4 style="color: rgb(92, 138, 207);">Optional Ip Restriction</h4>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Default Access:</label>
+              </div>
+              <div class="col-75">
+                <select id="country" name="country">
+                  <option value="australia">Allow all</option>
+                  <option value="canada">Not allow</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">IP Address Filtering:</label>
+              </div>
+              <div class="col-75" style="color: rgb(92, 138, 207);">
+               Add Single IP | Add Ip Range
+              </div>
+            </div>
+            <div class="row" >
+              <button  type="submit"  class="btn btn-primary" >Create</button>
+              <button type="button" class="btn btn-outline">Cancel</button>
+
+            </div>
+          </form>
+        </div>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>
