@@ -3,7 +3,7 @@
   "version": "11.2.13",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4201 -o",
+    "start": "ng serve --port 9080 -o",
     "build": "ng build --base-href ./ --prod --aot --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",

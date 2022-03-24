@@ -103,9 +103,7 @@ export class AddwireframeComponent implements OnInit {
    console.log("in add wireframe  oncreate",this.formType,this.moduleId);
 
 
-    this.wireframeService
-      .create(this.entryForm.value, this.formType, this.moduleId)
-      .subscribe(
+    this.wireframeService.create(this.entryForm.value, this.formType, this.moduleId).subscribe(
         (data) => {
           console.log(data);
 
