@@ -1,7 +1,7 @@
 <!-- <div class="layout-padding">
     <ng-template #recursiveList let-list>
       <div class="container"
-        *ngFor="let item of list" 
+        *ngFor="let item of list"
         [dndDraggable]="item"
         dndEffectAllowed="move"
         [dndDisableIf]="item.disable"
@@ -20,13 +20,13 @@
           class="layout-padding"
           dndDropzone
           (dndDrop)="onDrop($event, item.children)">
-          <ng-container 
+          <ng-container
             *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"> <H1>Hello</H1>
           </ng-container>
         </div>
 	    </div>
     </ng-template>
-  
+
     <div
       class="layout-padding"
       dndDropzone
@@ -60,6 +60,10 @@
 		</div>
 	  </div>
 	  <div class="col-10">
+      <div class="form-group" style="margin-bottom: 0px !important; padding: 30px 60px 5px 60px;">
+				<h2><input class="form-control" type="text" [(ngModel)]="model.name" style="font-size: 20px;" /></h2>
+				<input class="form-control" type="text" [(ngModel)]="model.description" />
+			</div>
 			<ng-template #recursiveList let-list>
 				<section dndDropzone
 					(dndDragover)="onDragover($event)"
@@ -67,7 +71,7 @@
 					[ngClass]="{'empty':list.length == 0}"
 					[style.backgroundColor]="model.theme.bgColor"
 					[style.color]="model.theme.textColor">
-					<div class="field {{item.size}}" *ngFor="let item of list;let i= index;" 
+					<div class="field {{item.size}}" *ngFor="let item of list;let i= index;"
 						[dndDraggable]="item"
 						dndEffectAllowed="move"
 						[dndDisableIf]="item.disable"
@@ -77,9 +81,9 @@
 						(dndMoved)="onDragged(item, list, 'move')"
 						(dndCanceled)="onDragged(item, list, 'none')"
 						(dndEnd)="onDragEnd($event)">
-						<div class="row form-group container-fluid"> 
+						<div class="row form-group container-fluid">
 							<!-- <div *ngIf="item.type == 'Division'" class="pull-left" style="margin-bottom: -25px; padding-right: 100px;"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div> -->
-							<div class="col-12"> 
+							<div class="col-12">
 								<i  (click)="editProperty(item)" class="fa fa-chevron-up pull-right iconpadding"></i>
 								<i  (click)="removeField(list, item.name)" class="fa fa-trash pull-right iconpadding"></i>
 								<div *ngIf="item.type=='text'" class="colPadding">
@@ -118,12 +122,12 @@
 								</div>
 								<div *ngIf="item.type =='paragraph'" class="colPadding">
 									<p class="form-text">{{item.label}}</p>
-								</div> 
+								</div>
 								<!-- <div *ngIf="item.type=='Grid Lines'" style="border: 2px solid black;" class="container layout-padding"
 										(dndDrop)="onDrop2($event, item.children)">
 									<p class="form-text text-dark">{{item.label}}</p>
 									<hr style="border: 1px solid #8c8b8b; margin-top : 0.1rem; margin-bottom: -0.9px !important;">
-									<ng-container 
+									<ng-container
 										*ngTemplateOutlet="recursiveList; context:{ $implicit:	item.children }">
 									</ng-container>
 								</div> -->
@@ -146,36 +150,36 @@
 														<th style="border: 0.5px solid black"  *ngFor="let it of item.children;" class="tableData"
 														[dndDraggable]="it"
 														dndEffectAllowed="move"
-														
+
 														(dndStart)="onDragStart($event)"
 														(dndCopied)="onDragged(it, item.children, 'copy')"
 														(dndLinked)="onDragged(it, item.children, 'link')"
 														(dndMoved)="onDragged(it, item.children, 'move')"
 														(dndCanceled)="onDragged(it, item.children, 'none')"
 														(dndEnd)="onDragEnd($event)"
-														
-														
+
+
 														>
-															
+
 
 															<i  (click)="editProperty(it)" class="fa fa-chevron-up pull-right iconpadding"></i>
 															<i  (click)="removeField(list, it.name)" class="fa fa-trash pull-right iconpadding"></i>
 															<div class="colPadding">
 																{{it.label}}
 															</div>
-														
+
 														<!-- bsf -->
 
 
-														<clr-modal [(clrModalOpen)]="it.toggle" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">  
+														<clr-modal [(clrModalOpen)]="it.toggle" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">
 															<div class="modal-body" >
 																<div class="container">
 																<div class="form-group">
 																	<label class="labelPadding">Required</label>
 																	<i *ngIf="it.required" (click)="it.required=false" class="fa fa-toggle-on red"></i>
 																	<i *ngIf="!it.required" (click)="it.required=true" class="fa fa-toggle-off"></i>
-															
-															
+
+
 																	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 																	<div class="form-check form-check-inline">
 																	<input class="form-check-input" type="radio" [attr.name]="'inlineRadioOptions-' + i" [attr.id]="'inlineRadio1-' + i" [attr.value]="'1a-' + i"  (change)="handleChange(i,  $event.target.value,it)">
@@ -254,7 +258,7 @@
 																		<label class="labelPadding">Action</label>
 																		</div>
 																	</div>
-																	</div>    
+																	</div>
 																	<div *ngFor="let i of it.values; let valueIndex=index;" class="row">
 																	<div class="col-5">
 																	<div class="form-group">
@@ -293,8 +297,8 @@
 																</div>
 															</div>
 														</clr-modal>
-														
-														
+
+
 														</th>
 														<th style="border: 0.5px solid black" class="tableData">Action</th>
 													</tr>
@@ -313,7 +317,7 @@
 										(dndDrop)="onDrop($event, item.children)">
 									<p class="form-text text-dark">{{item.label}}</p>
 									<hr style="border: 1px solid #8c8b8b; margin-top : 0.1rem; margin-bottom: -0.9px !important;">
-									<ng-container 
+									<ng-container
 										*ngTemplateOutlet="recursiveList; context:{ $implicit:	item.children }">
 									</ng-container>
 								</div>
@@ -346,15 +350,15 @@
 								</div>
 							</div>
 						</div>
-						<clr-modal [(clrModalOpen)]="item.toggle" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">  
+						<clr-modal [(clrModalOpen)]="item.toggle" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">
 							<div class="modal-body" >
 								<div class="container">
 								<div class="form-group">
 									<label class="labelPadding">Required</label>
 									<i *ngIf="item.required" (click)="item.required=false" class="fa fa-toggle-on red"></i>
 									<i *ngIf="!item.required" (click)="item.required=true" class="fa fa-toggle-off"></i>
-							
-							
+
+
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" [attr.name]="'inlineRadioOptions-' + i" [attr.id]="'inlineRadio1-' + i" [attr.value]="'1a-' + i"  (change)="handleChange(i,  $event.target.value,item)">
@@ -433,7 +437,7 @@
 										<label class="labelPadding">Action</label>
 										</div>
 									</div>
-									</div>    
+									</div>
 									<div *ngFor="let i of item.values; let valueIndex=index;" class="row">
 									<div class="col-5">
 									<div class="form-group">
@@ -580,19 +584,19 @@
 		</div>
 		<div *ngIf="item.type =='paragraph'">
 		  <p class="form-text">{{item.label}}</p>
-		</div> 
+		</div>
 		<div *ngIf="item.type=='Section'">
 		  <p class="form-text">{{item.label}}</p>
 		  <hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem;">
-		</div> 
+		</div>
 		<div *ngIf="item.type=='Division'">
 		  <p class="form-text">{{item.label}}</p>
 		  <hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem;">
-		</div> 
+		</div>
 		<div *ngIf="item.type=='Grid Lines'">
 		  <p class="form-text">{{item.label}}</p>
 		  <hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem;">
-		</div> 
+		</div>
 		<div *ngIf="item.type=='autocomplete'">
 		  <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
 		  <select class="form-control" id="{{item.name}}" [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}">
@@ -622,9 +626,9 @@
 		  <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}" class="btn btn-primary" id="{{item.name}}" >
 		</div>
 	  </div>
-  
+
 	  <p (click)="show=1" class="marginT60 pointer">Show developer data</p>
-  
+
 	</div>
   </form>
 </div>
@@ -698,11 +702,11 @@
 			  </div>
 			  <div *ngIf="item.type =='paragraph'">
 				<p class="form-text">{{item.label}}</p>
-			  </div> 
+			  </div>
 			  <div *ngIf="item.type=='Section'">
 				<p class="form-text">{{item.label}}</p>
 				<hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem;">
-			  </div> 
+			  </div>
 			  <div *ngIf="item.type=='Division'">
 				<p class="form-text">{{item.label}}</p>
 				<hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem; margin-left: 2px; margin-right: 2px;">
@@ -768,7 +772,7 @@
 					<input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}" class="btn btn-primary" id="{{item.name}}" >
 				  </div>
 				</div>
-			  </div> 
+			  </div>
 			  <div *ngIf="item.type=='Grid Lines'">
 				<p class="form-text">{{item.label}}</p>
 				<hr style="border: 2px solid #8c8b8b; margin-top : 0.1rem; margin-left: 2x; margin-right: 2px;">
@@ -786,10 +790,10 @@
 					  <td *ngFor="let data of tr_map.get(i); let di = index;">{{data}} </td>
 					  <td><i class="fa fa-trash"></i></td>
 					</tr>
-					
+
 				  </tbody>
 				</table>
-			  </div> 
+			  </div>
 			  <div *ngIf="item.type=='autocomplete'">
 				<label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
 				<select class="form-control" id="{{item.name}}" [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}">
