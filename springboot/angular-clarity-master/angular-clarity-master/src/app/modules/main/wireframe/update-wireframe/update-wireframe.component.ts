@@ -301,7 +301,8 @@ wfline = {
 }
 formBuilder: any;
   constructor(
-
+    private router: Router,
+    private route: ActivatedRoute,
     private ngZone: NgZone,
     private _route: ActivatedRoute,
     private alertService: AlertService,
@@ -322,7 +323,8 @@ formBuilder: any;
           }
 
         }
-        console.log(this.oneLine);
+       // console.log(this.wflineget);
+        console.log(this.model);
 
       },
       (error: any)=>{
@@ -372,6 +374,7 @@ formBuilder: any;
         console.log('Updation Successful...');
         this.ngOnInit();
         this.modal = false;
+        this.router.navigate(["../../../../../wireframe"], { relativeTo: this.route })
         // this.router.navigate(["../../../../wireframe"], { relativeTo: this._route });
       }
     );

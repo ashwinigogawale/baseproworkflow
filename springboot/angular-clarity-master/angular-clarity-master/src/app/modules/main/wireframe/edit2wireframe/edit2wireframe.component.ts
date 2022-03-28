@@ -10,6 +10,11 @@ import { FormdragAttributeService } from 'src/app/services/api/formdrag-attribut
 import { FormdragValueService } from 'src/app/services/api/formdrag-value.service';
 import { FormfragModalService } from 'src/app/services/api/formfrag-modal.service';
 import { WireframeLineService } from 'src/app/services/api/wireframe-line.service';
+import { Rn_Fb_Lines } from 'src/app/models/Rn_Fb_Lines';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Rn_Fb_Header } from 'src/app/models/Rn_Fb_Header';
+import { WireframeService } from 'src/app/services/api/wireframe.service';
+import { WireFrame } from 'src/app/models/WireFrame';
 declare var $: any;
 @Component({
   selector: 'app-edit2wireframe',
@@ -301,36 +306,86 @@ wfline = {
   model: ''
 }
 formBuilder: any;
+fbLine: Rn_Fb_Lines;
+public exportDataForm: FormGroup;
+public addButtonOrSectionForm: FormGroup;
+fbHeader: Rn_Fb_Header;
+formType: string;
+uiData: WireFrame = {} as WireFrame;
+model1: any = {
+  name: 'Form name...',
+  description: 'Form Description...',
+  attributes: this.modelFields,
+  theme: {
+
+    bannerImage: ""
+  },
+
+};
   constructor(
 
     private ngZone: NgZone,
-    private _route: ActivatedRoute,
+    private route: ActivatedRoute,
     private alertService: AlertService,
     private toastr: ToastrService,
-    private _line: WireframeLineService
+    private _line: WireframeLineService,
+    private _fb: FormBuilder,
+    private wireFrameService: WireframeService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.fbLine = new Rn_Fb_Lines();
+    //this.id = this.route.snapshot.params["id"]; // fb_header_id
+    this.id = this.route.snapshot.params.hid;
+console.log("update with id = ", this.id);
+   // this.getById(this.id);
+   // this.getUIData(this.id);
 
-    this.id = this._route.snapshot.params.id;
 
-    this._line.getAllLines().subscribe(
-      (data: any)=>{
-        for(let val of data){
-          if(val.header_id == this.id){
-            this.wflineget = val;
-            this.model = JSON.parse(val.model);
-          }
+    // this._line.getAllLines().subscribe(
+    //   (data: any)=>{
+    //     for(let val of data){
+    //       //console.log(val.header_id);
+    //       if(val.header_id == this.id){
+    //         console.log("header id",this.id);
+    //         this.wflineget = val;
+    //         console.log(this.wflineget);
+    //         this.model = JSON.parse(val.model);
+    //         console.log(this.model);
+    //       }
 
-        }
-        console.log(this.oneLine);
+    //     }
+    //     console.log(this.oneLine);
+
+    //   },
+    //   (error: any)=>{
+
+    //   }
+    // );
+    this.copy_value();
+  }
+  getById(id: number) {
+    this.wireFrameService.getById(id).subscribe(
+      (data) => {
+        console.log("data by id",data);
+        this.fbHeader = data;
+        this.formType = data.formType;
 
       },
-      (error: any)=>{
-
+      (err) => {
+        console.log(err);
       }
     );
-    this.copy_value();
+  }
+  getUIData(id: number) {
+    console.log("get line by header id",id);
+    this.wireFrameService.getLinesByHeaderId(id).subscribe(res => {
+      this.uiData = res;
+      console.log("data by header id ",this.uiData);
+    }, (err) => {
+      console.log(err);
+    });
   }
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -368,6 +423,7 @@ formBuilder: any;
     this._line.updateOneLine(this.wflineget).subscribe(
       (data: any)=>{
         console.log('Updation Successful...');
+        console.log(data);
         this.ngOnInit();
         this.modal = false;
         // this.router.navigate(["../../../../wireframe"], { relativeTo: this._route });
@@ -433,7 +489,8 @@ formBuilder: any;
     }
   }
   addModal(){
-
+    console.log('Add button clicked...');
+    console.log(this.model1);
     this.wfline.header_id = this.id;
     this.wfline.model = JSON.stringify(this.model);
 
@@ -443,6 +500,7 @@ formBuilder: any;
         console.log(data);
         this.modal = false;
         this.ngOnInit();
+        this.router.navigate(["../../../../../wireframe"], { relativeTo: this.route })
       },
       (error: any)=>{
         console.log('Error in adding data...');
