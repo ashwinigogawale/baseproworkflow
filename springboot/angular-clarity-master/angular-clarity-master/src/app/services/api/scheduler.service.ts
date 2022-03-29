@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SchedulerService {
 
-  baseurl='http://localhost:8085';
+  baseurl='http://52.55.113.87:31183';//http://localhost:8085
   constructor(private _http: HttpClient,) { }
   public getAllinfo() {
     return this._http.get(`${this.baseurl}/schedule`);
